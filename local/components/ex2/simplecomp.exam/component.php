@@ -22,6 +22,21 @@ if (empty($arParams['PROPERTY_UF'])) {
 }
 
 if ($USER->IsAuthorized()) {
+    $arButtons = CIBlock::GetPanelButtons(($arParams['NEWS_IBLOCK_ID']));
+    $this->AddIncludeAreaIcons(
+        array(
+
+            array(
+
+                "ID" => 'Linklb',
+                'TITLE' => 'ИБ в админке',
+                "URL" =>$arButtons['submenu']['element_list']['ACTION_URL'],
+                'IN_PARAMS_MENU' => true,
+
+            )
+
+        )
+    );
     $arResult['COUNT'] = 0;
     $currentUserId = $USER->GetID();
     $currentUserType = CUser::GetList(
